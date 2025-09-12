@@ -5,6 +5,7 @@ import {
   IsObject,
   IsOptional,
   IsString,
+  ValidateNested,
 } from 'class-validator';
 
 export class FiltersDto {
@@ -25,6 +26,7 @@ export class FiltersDto {
   @IsOptional()
   @IsObject()
   @IsNotEmptyObject()
+  @ValidateNested()
   @IsDate({ each: true })
   dateRange?: {
     start: Date;
