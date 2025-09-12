@@ -1,12 +1,20 @@
 import {
-  IsDate,
+  IsDateString,
   IsEnum,
-  IsNotEmptyObject,
   IsObject,
   IsOptional,
   IsString,
-  ValidateNested,
 } from 'class-validator';
+
+export class DateRangeDto {
+  @IsOptional()
+  @IsDateString()
+  gte?: Date;
+
+  @IsOptional()
+  @IsDateString()
+  lte?: Date;
+}
 
 export class FiltersDto {
   @IsOptional()
@@ -25,11 +33,5 @@ export class FiltersDto {
 
   @IsOptional()
   @IsObject()
-  @IsNotEmptyObject()
-  @ValidateNested()
-  @IsDate({ each: true })
-  dateRange?: {
-    start: Date;
-    end: Date;
-  };
+  dateRange?: DateRangeDto;
 }

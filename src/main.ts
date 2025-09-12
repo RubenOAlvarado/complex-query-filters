@@ -14,6 +14,7 @@ async function bootstrap() {
       transformOptions: { enableImplicitConversion: true },
     }),
   );
+  console.log(`Date.now(): ${Date.UTC(2023, 11, 31)}`);
   await app.listen(process.env.PORT ?? 3000);
 }
 void bootstrap();
